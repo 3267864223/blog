@@ -21,6 +21,7 @@
 </head>
 
 <body>
-${msg }
+${user.userName }
+${user.userPass }
 </body>
 </html>
