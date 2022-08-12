@@ -143,6 +143,13 @@
 			<artifactId>druid</artifactId>
 			<version>1.0.16</version>
 		</dependency>
+		
+		<!-- 加入rapid 的支持   (支持JSP的模板继承 ) -->
+		<dependency>
+			<groupId>com.googlecode.rapid-framework</groupId>
+			<artifactId>rapid-core</artifactId>
+			<version>4.0.5</version>
+		</dependency>
 
 	</dependencies>
 

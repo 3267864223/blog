@@ -23,10 +23,11 @@ public class UserController {
 		if(user!=null) {
 			if(user.getUserPass().equals(userPass)) {
 				request.getSession().setAttribute("session_user", user);
+				request.setAttribute("msg", "登录成功");
 				return "index";	
 			}
 			else {
-				request.setAttribute("msg", "密码错误");
+				request.setAttribute("msg", "账号或密码错误");
 				return "login";
 			}
 		}
