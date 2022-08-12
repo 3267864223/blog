@@ -21,7 +21,6 @@
 </head>
 
 <body>
-${user.userName }
-${user.userPass }
+<h1>shouye</h1>
 </body>
 </html>
