@@ -17,6 +17,7 @@
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
 	<meta charset="utf-8">
+	<script src="resources/js/jquery-1.8.0.js"></script>
 	<link rel="shortcut icon" href="resources/img/logo.png">
 	<link rel="stylesheet" href="resources/plugin/layui/css/layui.css">
 	<link rel="stylesheet" href="resources/css/back.css">
@@ -57,15 +58,15 @@
 			</ul>
 			<ul class="layui-nav layui-layout-right">
 				<li class="layui-nav-item"><a href="javascript:;"> <img
-						src="resources/uploads/2017/10/20171006225356181.jpg"
-						class="layui-nav-img"> admin
+						src="resources${session_user.userAvatar }"
+						class="layui-nav-img">${session_user.userNickname }
 				</a>
 					<dl class="layui-nav-child">
 						<dd>
 							<a href="/admin/user/profile">基本资料</a>
 						</dd>
 					</dl></li>
-				<li class="layui-nav-item"><a href="/admin/logout">退出</a></li>
+				<li class="layui-nav-item"><a href="user/logout">退出</a></li>
 			</ul>
 		</div>
 

@@ -4,6 +4,9 @@
 <rapid:override name="frame-header-style">
 	<link rel="stylesheep" href="resources/css/index-page.css"></link>
 </rapid:override>
+<rapid:override name="frame-header-script">
+	
+</rapid:override>
 
 <rapid:override name="frame-content">
 	<div class="layui-container">
@@ -15,18 +18,7 @@
 							<div id="published-posts" class="activity-block">
 								<h3>最近发布</h3>
 								<br>
-								<ul>
-									<li><span>21:06 11月25日</span> <a href="/article/33"
-										target="_blank">MySQL常用命令语句</a></li>
-									<li><span>21:05 11月25日</span> <a href="/article/32"
-										target="_blank">Docker_入门？只要这篇就够了！（纯干货适合0基础小白）</a></li>
-									<li><span>21:02 11月25日</span> <a href="/article/31"
-										target="_blank">RocketMQ 实战之快速入门</a></li>
-									<li><span>21:01 11月25日</span> <a href="/article/30"
-										target="_blank">SpringBoot + mongodb 整合, 记录网站操作日志，常用查询操作</a></li>
-									<li><span>21:00 11月25日</span> <a href="/article/29"
-										target="_blank">IDEA启动EDAS项目</a></li>
-								</ul>
+								<ul id="article"></ul>
 							</div>
 							<br>
 							<div id="latest-comments" class="activity-block">
@@ -198,6 +190,24 @@
 			</div>
 		</div>
 	</div>
+</rapid:override>
+
+<rapid:override name="frame-footer-script">
+	<script>
+		$(function(){
+			$.ajax({
+				url:"article/getAllArticle",
+				dataType:"json",
+				type:"post",
+				success:function(articleList){
+					$("#article").empty();
+					$.each(articleList,function(k,v){
+						$("#article").append("<li><span>"+v.articleUpdateTime+"</span> <a href='/article/toArticle?articleId="+v.articleId+"' target='_blank'>"+v.articleTitle+"</a></li>");
+					});
+				}
+			});
+		});
+	</script>
 </rapid:override>
 
 <%@include file="framework.jsp"%>
