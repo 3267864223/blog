@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <rapid:override name="frame-header-style">
 	<link rel="stylesheep" href="resources/css/index-page.css"></link>
@@ -18,128 +20,42 @@
 							<div id="published-posts" class="activity-block">
 								<h3>最近发布</h3>
 								<br>
-								<ul id="article"></ul>
+								<ul>
+									<c:forEach var="a" items="${articleList }">
+										<li><span><fmt:formatDate pattern="HH:mm M月dd日" value="${a.articleUpdateTime }"/>  </span> <a href="/article/${a.articleId }"	target="_blank">${a.articleTitle }</a></li>
+									</c:forEach>
+								</ul>	
 							</div>
 							<br>
 							<div id="latest-comments" class="activity-block">
 								<h3>近期评论</h3>
 								<ul id="the-comment-list" data-wp-lists="list:comment">
-									<li class="comment   thread-even comment-item approved"><img
-										alt=""
-										src="http://cn.gravatar.com/avatar/88d5cb704d88bdad67d000eee4782000?s=128&d=identicon&r=PG"
-										class="avatar avatar-50 photo" height="50" width="50">
-										<div class="dashboard-comment-wrap has-row-actions">
-											<p class="comment-meta">
-												由<cite class="comment-author"> <a target="_blank"
-													href="" rel="external nofollow" class="url">1111</a>
-												</cite>发表在 《<a href="/article/6">Hibernate 简单的CURD操作</a>》
-											</p>
-
-											<blockquote>
-												<p>1</p>
-											</blockquote>
-											<p class="row-actions">
-												| <span class=""> <a data-comment-id="1268"
-													href="/admin/comment/reply/29"> 回复 </a>
-												</span> <span class=""> | <a href="/admin/comment/edit/29">编辑</a>
-												</span> <span class=""> | <a href="javascript:void(0)"
-													onclick="deleteComment(29)">删除</a>
-												</span>
-											</p>
-										</div></li>
-									<li class="comment   thread-even comment-item approved"><img
-										alt=""
-										src="http://cn.gravatar.com/avatar/487f87505f619bf9ea08f26bb34f8118?s=128&d=identicon&r=PG"
-										class="avatar avatar-50 photo" height="50" width="50">
-										<div class="dashboard-comment-wrap has-row-actions">
-											<p class="comment-meta">
-												由<cite class="comment-author"> <a target="_blank"
-													href="" rel="external nofollow" class="url">你好</a>
-												</cite>发表在 《<a href="/article/6">Hibernate 简单的CURD操作</a>》
-											</p>
-
-											<blockquote>
-												<p>ssss</p>
-											</blockquote>
-											<p class="row-actions">
-												| <span class=""> <a data-comment-id="1268"
-													href="/admin/comment/reply/22"> 回复 </a>
-												</span> <span class=""> | <a href="/admin/comment/edit/22">编辑</a>
-												</span> <span class=""> | <a href="javascript:void(0)"
-													onclick="deleteComment(22)">删除</a>
-												</span>
-											</p>
-										</div></li>
-									<li class="comment   thread-even comment-item approved"><img
-										alt=""
-										src="http://cn.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&d=identicon&r=PG"
-										class="avatar avatar-50 photo" height="50" width="50">
-										<div class="dashboard-comment-wrap has-row-actions">
-											<p class="comment-meta">
-												由<cite class="comment-author"> <a target="_blank"
-													href="" rel="external nofollow" class="url">saysky3</a>
-												</cite>发表在 《<a href="/article/2">springmvc 表单中文乱码解决方案</a>》
-											</p>
-
-											<blockquote>
-												<p>33333</p>
-											</blockquote>
-											<p class="row-actions">
-												| <span class=""> <a data-comment-id="1268"
-													href="/admin/comment/reply/20"> 回复 </a>
-												</span> <span class=""> | <a href="/admin/comment/edit/20">编辑</a>
-												</span> <span class=""> | <a href="javascript:void(0)"
-													onclick="deleteComment(20)">删除</a>
-												</span>
-											</p>
-										</div></li>
-									<li class="comment   thread-even comment-item approved"><img
-										alt=""
-										src="http://cn.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&d=identicon&r=PG"
-										class="avatar avatar-50 photo" height="50" width="50">
-										<div class="dashboard-comment-wrap has-row-actions">
-											<p class="comment-meta">
-												由<cite class="comment-author"> <a target="_blank"
-													href="" rel="external nofollow" class="url">saysky2</a>
-												</cite>发表在 《<a href="/article/2">springmvc 表单中文乱码解决方案</a>》
-											</p>
-
-											<blockquote>
-												<p>sssssss</p>
-											</blockquote>
-											<p class="row-actions">
-												| <span class=""> <a data-comment-id="1268"
-													href="/admin/comment/reply/19"> 回复 </a>
-												</span> <span class=""> | <a href="/admin/comment/edit/19">编辑</a>
-												</span> <span class=""> | <a href="javascript:void(0)"
-													onclick="deleteComment(19)">删除</a>
-												</span>
-											</p>
-										</div></li>
-									<li class="comment   thread-even comment-item approved"><img
-										alt=""
-										src="http://cn.gravatar.com/avatar/3ae8728fec3cd5cbfe99c4b966695f03?s=128&d=identicon&r=PG"
-										class="avatar avatar-50 photo" height="50" width="50">
-										<div class="dashboard-comment-wrap has-row-actions">
-											<p class="comment-meta">
-												由<cite class="comment-author"> <a target="_blank"
-													href="http://liuyanzhao.com" rel="external nofollow"
-													class="url">saysky</a>
-												</cite>发表在 《<a href="/article/2">springmvc 表单中文乱码解决方案</a>》
-											</p>
-
-											<blockquote>
-												<p>ssssss</p>
-											</blockquote>
-											<p class="row-actions">
-												| <span class=""> <a data-comment-id="1268"
-													href="/admin/comment/reply/18"> 回复 </a>
-												</span> <span class=""> | <a href="/admin/comment/edit/18">编辑</a>
-												</span> <span class=""> | <a href="javascript:void(0)"
-													onclick="deleteComment(18)">删除</a>
-												</span>
-											</p>
-										</div></li>
+									<c:forEach var="c" items="${commentList }">
+										<li class="comment   thread-even comment-item approved"><img
+											alt=""
+											src="${c.commentAuthorAvatar }"
+											class="avatar avatar-50 photo" height="50" width="50">
+											<div class="dashboard-comment-wrap has-row-actions">
+												<p class="comment-meta">
+													由<cite class="comment-author"> <a target="_blank"
+														href="" rel="external nofollow" class="url">${c.commentAuthorName }</a>
+													</cite>发表在 《<a href="/article/6">${c.article.articleTitle }</a>》
+												</p>
+	
+												<blockquote>
+													<p>${c.commentContent }</p>
+												</blockquote>
+												<p class="row-actions">
+													| <span class=""> <a data-comment-id="1268"
+														href="/admin/comment/reply/29"> 回复 </a>
+													</span> <span class=""> | <a href="/admin/comment/edit/29">编辑</a>
+													</span> <span class=""> | <a href="javascript:void(0)"
+														onclick="deleteComment(29)">删除</a>
+													</span>
+												</p>
+											</div>
+										</li>
+									</c:forEach>
 								</ul>
 							</div>
 						</div>
@@ -151,7 +67,7 @@
 					<div class="inside">
 						<form name="post" method="post" id="insertDraftForm"
 							class="initial-form hide-if-no-js"
-							action="/admin/article/insertDraftSubmit">
+							action="article/insertDraftSubmit">
 
 							<div class="layui-form-item">
 								<div class="layui-input-block">
@@ -167,10 +83,11 @@
 								</div>
 							</div>
 							<input type="hidden" name="articleStatus" value="0">
+							<input type="hidden" name="articleUserId" value="${session_user.userId }">
 							<div class="layui-form-item">
 								<div class="layui-input-block">
-									<button class="layui-btn layui-btn-small" lay-submit
-										lay-filter="formDemo" onclick="insertDraft()">保存草稿</button>
+									<button type="submit" class="layui-btn layui-btn-small" lay-submit
+										lay-filter="formDemo" >保存草稿</button>
 									<button type="reset"
 										class="layui-btn layui-btn-small layui-btn-primary">重置</button>
 								</div>
@@ -194,19 +111,7 @@
 
 <rapid:override name="frame-footer-script">
 	<script>
-		$(function(){
-			$.ajax({
-				url:"article/getAllArticle",
-				dataType:"json",
-				type:"post",
-				success:function(articleList){
-					$("#article").empty();
-					$.each(articleList,function(k,v){
-						$("#article").append("<li><span>"+v.articleUpdateTime+"</span> <a href='/article/toArticle?articleId="+v.articleId+"' target='_blank'>"+v.articleTitle+"</a></li>");
-					});
-				}
-			});
-		});
+	
 	</script>
 </rapid:override>
 

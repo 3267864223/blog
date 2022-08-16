@@ -78,10 +78,10 @@
 						href="javascript:;">文章</a>
 						<dl class="layui-nav-child">
 							<dd>
-								<a href="/admin/article">全部文章</a>
+								<a href="article">全部文章</a>
 							</dd>
 							<dd>
-								<a href="/admin/article/insert">写文章</a>
+								<a href="article/add">写文章</a>
 							</dd>
 							<dd>
 								<a href="/admin/category">全部分类</a>

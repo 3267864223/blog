@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="blog.mapper.CommentMapper">
+
+	<sql id="t_columns">
+		comment_id, comment_pid, comment_pname, comment_article_id, comment_author_name,
+		comment_author_email, comment_author_url, comment_author_avatar, comment_content, comment_agent,
+		comment_ip,comment_create_time, comment_role
+	</sql>
+    
+    <resultMap type="Comment" id="commentArticle">
+    	<id property="commentId" column="comment_id" />
+    	<result property="commentAuthorName" column="comment_author_name" />
+    	<result property="commentAuthorAvatar" column="comment_author_avatar" />
+    	<result property="commentContent" column="comment_content" />
+    	<association property="article" javaType="article">
+    		<id property="articleId" column="article_id" />
+    		<result property="articleTitle" column="article_title" />
+    	</association>
+    </resultMap>
+    
+	<select id="getCommentLimit"  resultMap="commentArticle">
+		select a.comment_id,a.comment_author_name,a.comment_author_avatar,a.comment_content,b.article_title from comment a left join article b on a.comment_article_id=b.article_id order by a.comment_id desc limit #{n}
+	</select> 
+	
+</mapper>

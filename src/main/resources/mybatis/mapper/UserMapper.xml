@@ -6,7 +6,7 @@
 	    user_last_login_ip, user_register_time, user_last_login_time, user_status
     </sql>
 	
-	<select id="getUserByNameOrEmail" parameterType="string" resultType="blog.entity.User">
+	<select id="getUserByNameOrEmail" parameterType="string" resultType="User">
 		select <include refid="t_columns" /> from User where user_name=#{str} or user_email=#{str} and user_status > 0 limit 1
 	</select> 
 </mapper>
