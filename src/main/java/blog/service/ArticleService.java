@@ -42,4 +42,23 @@ public interface ArticleService {
 	 * @param article 文章信息
 	 */
 	void addArticle(Article article);
+
+	/**
+	 * 查询文章
+	 * @param 文章id
+	 * @return 文章信息
+	 */
+	Article getArticle(Integer articleId);
+
+	/**
+	 * 修改文章
+	 * @param article 文章信息
+	 */
+	void updateArticle(Article article);
+
+	/**
+	 * 删除文章
+	 * @param article 文章id
+	 */
+	void deleteArticleById(Integer articleId);
 }

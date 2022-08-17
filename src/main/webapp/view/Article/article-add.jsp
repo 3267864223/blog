@@ -2,10 +2,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid"%>
 
+<rapid:override name="frame-header-script">
+	<link rel="stylesheet" href="resources/kindeditor/themes/default/default.css" />
+	<link rel="stylesheet" href="resources/kindeditor/plugins/code/prettify.css" />
+	<script charset="utf-8" src="resources/kindeditor/kindeditor-all-min.js"></script>
+	<script charset="utf-8" src="resources/kindeditor/lang/zh-CN.js"></script>
+	<script charset="utf-8" src="resources/kindeditor/plugins/code/prettify.js"></script>
+</rapid:override>
+
 <rapid:override name="frame-content">
 	<blockquote class="layui-elem-quote">
 		<span class="layui-breadcrumb" lay-separator="/"> 
-			<a href="/admin">首页</a> <a href="/admin/article">文章列表</a> <a><cite>添加文章</cite></a>
+			<a href="/admin">首页</a> <a href="article">文章列表</a> <a><cite>添加文章</cite></a>
 		</span>
 	</blockquote>
 	
@@ -80,22 +88,8 @@
 	
 <rapid:override name="frame-footer-script">
 	<script>
-		layui.use([ 'form', 'layedit', 'laydate' ],function() {
-			var form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
-			var $=layui.jquery;
-			//上传图片,必须放在 创建一个编辑器前面
-			layedit.set({
-				uploadImage : {
-					url : '/admin/upload/img' //接口url
-					,
-					type : 'post' //默认post
-				}
-			});
-
-			//创建一个编辑器
-			var editIndex = layedit.build('content', {
-				height : 350,
-			});
+		layui.use([ 'form', 'laydate' ],function() {
+			var form = layui.form, layer = layui.layer, laydate = layui.laydate;
 
 			//自定义验证规则
 			form.verify({
@@ -104,26 +98,6 @@
 						return '标题至少得5个字符啊';
 					}
 				},
-				pass : [ /(.+){6,12}$/, '密码必须6到12位' ],
-				content : function(value) {
-					layedit.sync(editIndex);
-				}
-			});
-
-			layedit.build('content', {
-				tool : [ 'strong' //加粗
-				, 'italic' //斜体
-				, 'underline' //下划线
-				, 'del' //删除线
-				, '|' //分割线
-				, 'left' //左对齐
-				, 'center' //居中对齐
-				, 'right' //右对齐
-				, 'link' //超链接
-				, 'unlink' //清除链接
-				, 'face' //表情
-				, 'image' //插入图片
-				, 'code' ]
 			});
 
 			layui.use('code', function() { //加载code模块
@@ -150,13 +124,22 @@
 						}
 					});
 				}
-				
 				form.render('select'); //这个很重要	
 			});
 		});
 	</script>
 
 	<script>
+		KindEditor.ready(function(K) {
+			var editor1 = K.create('textarea[id="content"]', {
+				uploadJson : 'article/uploadImg',
+				allowFileManager : true,
+				width:"1570px",
+				height:"420px"
+			});
+			prettyPrint();
+		});
+		
 		//给文本编辑器的iframe引入代码高亮的css
 		$("iframe").contents().find("head").append("<link rel=\"stylesheet\" href=\"/css/highlight.css\">\n");
 	</script>

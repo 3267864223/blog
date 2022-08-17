@@ -1,21 +1,18 @@
 package blog.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Tag {
 	
-	public Tag() {}
-
     public Tag(Integer tagId) {
         this.tagId = tagId;
-    }
-
-    public Tag(Integer tagId, String tagName, String tagDescription, Integer articleCount) {
-        this.tagId = tagId;
-        this.tagName = tagName;
-        this.tagDescription = tagDescription;
-        this.articleCount = articleCount;
     }
 
 	private Integer tagId;

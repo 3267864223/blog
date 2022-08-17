@@ -56,4 +56,34 @@
 	<insert id="addArticleTag">
 		insert into article_tag_ref (article_id,tag_id) values (#{articleId},#{tagId})
 	</insert>
+	
+	<select id="getArticleById"  resultType="Article">
+		select <include refid="t_columns" /> from article where article_id=#{articleId}
+	</select> 
+	
+	<select id="getArticleCateById"  resultType="Category">
+		select a.article_id,b.* from article_category_ref a left join category b on a.category_id=b.category_id where article_id=#{articleId}
+	</select> 
+
+	<select id="getArticleTagById"  resultType="Tag">
+		select a.article_id,b.* from article_tag_ref a left join tag b on a.tag_id=b.tag_id where article_id=#{articleId}
+	</select> 
+	
+	<update id="updateArticle"  parameterType="Article">
+		update article set article_title=#{articleTitle},article_content=#{articleContent},
+		article_status=#{articleStatus},article_summary=#{articleSummary} where article_id=#{articleId}
+	</update>
+	
+	<delete id="deleteArticleCategory">
+		delete from article_category_ref where article_id=#{articleId}
+	</delete>
+	
+	<delete id="deleteArticleTag">
+		delete from article_tag_ref where article_id=#{articleId}
+	</delete>
+	
+	<delete id="deleteArticleById">
+		delete from article where article_id=#{articleId}
+	</delete>
+
 </mapper>

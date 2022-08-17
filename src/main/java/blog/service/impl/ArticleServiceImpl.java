@@ -56,4 +56,50 @@ public class ArticleServiceImpl implements ArticleService{
 			articleMapper.addArticleTag(article.getArticleId(),t.getTagId());
 		}
 	}
+
+	@Override
+	public Article getArticle(Integer articleId) {
+		Article article=articleMapper.getArticleById(articleId);
+		
+		//获取文章分类
+		List<Category> categoryList=articleMapper.getArticleCateById(articleId);
+		article.setCategoryList(categoryList);
+		//获取文章标签
+		List<Tag> tagList=articleMapper.getArticleTagById(articleId);
+		article.setTagList(tagList);
+		return article;
+	}
+
+	@Override
+	public void updateArticle(Article article) {
+		//article表中修改数据
+		articleMapper.updateArticle(article);
+		
+		//article_category_ref表中先删除再添加数据
+		articleMapper.deleteArticleCategory(article.getArticleId());
+		List<Category>categoryList=article.getCategoryList();
+		for(Category c: categoryList) {
+			articleMapper.addArticleCategory(article.getArticleId(),c.getCategoryId());
+		}
+		
+		//article_tag_ref表中先删除再添加数据
+		articleMapper.deleteArticleTag(article.getArticleId());
+		List<Tag> tagList=article.getTagList();
+		for(Tag t:tagList) {
+			articleMapper.addArticleTag(article.getArticleId(),t.getTagId());
+		}
+	}
+
+	@Override
+	public void deleteArticleById(Integer articleId) {
+		//article表中删除数据
+		articleMapper.deleteArticleById(articleId);
+		
+		//article_category_ref表中删除数据
+		articleMapper.deleteArticleCategory(articleId);
+		
+		//article_tag_ref表中删除数据
+		articleMapper.deleteArticleTag(articleId);
+		
+	}
 }

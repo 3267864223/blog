@@ -55,8 +55,8 @@
 						    </td>
 							<td> <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${a.articleUpdateTime }" /></td>
 							<td>
-								<a href="/admin/article/edit/${a.articleId }" class="layui-btn layui-btn-mini">编辑</a> 
-								<a href="javascript:void(0)" onclick="javascript:void(0)" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
+								<a href="article/update?articleId=${a.articleId }" class="layui-btn layui-btn-mini">编辑</a> 
+								<a href="javascript:del(${a.articleId })" class="layui-btn layui-btn-danger layui-btn-mini" >删除</a>
 							</td>	
 							<td>${a.articleId }</td>
 						</tr>
@@ -66,6 +66,25 @@
 		</form>
 		<%@ include file="../page.jsp" %>
 	</div>
+</rapid:override>
+
+<rapid:override name="frame-footer-script">
+	<script>
+		function del(articleId){
+			var result=true;
+			result=confirm("确定删除吗");
+			if(result==true){
+				$.ajax({
+					url:"article/del",
+					data:{articleId:articleId},
+					success:function(msg){
+						alert(msg);
+						window.location.href="article";
+					}
+				});
+			}
+		}
+	</script>
 </rapid:override>
 
 <%@ include file="../framework.jsp" %>

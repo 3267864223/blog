@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import blog.entity.Article;
+import blog.entity.Category;
+import blog.entity.Tag;
 
 public interface ArticleMapper {
 	
@@ -55,5 +57,50 @@ public interface ArticleMapper {
 	 * @param tagId 标签ID 
 	 */
 	void addArticleTag(@Param("articleId")  Integer articleId, @Param ("tagId") Integer tagId);
+
+	/**
+	 * 根据articleId查询文章
+	 * @param 文章id
+	 * @return 文章信息
+	 */
+	Article getArticleById(Integer articleId);
+	
+	/**
+	 * 根据articleId查询文章的分类
+	 * @param 文章id
+	 * @return 文章分类信息
+	 */
+	List<Category> getArticleCateById(Integer articleId);
+	
+	/**
+	 * 根据articleId查询文章的标签
+	 * @param 文章id
+	 * @return 文章标签信息
+	 */
+	List<Tag> getArticleTagById(Integer articleId);
+
+	/**
+	 * 根据修改文章的
+	 * @param 文章信息
+	 */
+	void updateArticle(Article article);
+
+	/**
+	 * 根据articleId删除文章的分类
+	 * @param 文章id
+	 */
+	void deleteArticleCategory(Integer articleId);
+
+	/**
+	 * 根据articleId删除文章的标签
+	 * @param 文章id
+	 */
+	void deleteArticleTag(Integer articleId);
+
+	/**
+	 * 根据articleId删除文章
+	 * @param 文章id
+	 */
+	void deleteArticleById(Integer articleId);
 	
 }
