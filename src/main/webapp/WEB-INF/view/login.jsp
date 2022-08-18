@@ -31,7 +31,7 @@
 		<form name="loginForm" id="loginForm" action="user/login" method="post">
 			<p>
 				<label for="user_login">用户名或电子邮件地址<br /> 
-					<input type="text" name="userName" id="user_login" class="input" value="admin" size="20" required />
+					<input type="text" name="userName" id="user_login" class="input" value="gggggg" size="20" required />
 				</label>
 			</p>
 			<p>

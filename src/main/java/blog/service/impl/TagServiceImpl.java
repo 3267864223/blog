@@ -17,7 +17,28 @@ public class TagServiceImpl implements TagService{
 	private TagMapper tagMapper;
 
 	public List<Tag> getAllTag() {
-		return tagMapper.getAllTag();
+		List<Tag> tagList=tagMapper.getAllTag();
+		for(Tag t:tagList) {
+			t.setArticleCount(tagMapper.getArticleTagCount(t.getTagId()));
+		}
+		return tagList;
+	}
+
+	public Tag getTagById(Integer tagId) {
+		return tagMapper.getTagById(tagId);
+	}
+
+	public void updateTag(Tag tag) {
+		tagMapper.updateTag(tag);
+		
+	}
+
+	public void addTag(Tag tag) {
+		tagMapper.addTag(tag);
+	}
+
+	public void deleteTag(Integer tagId) {
+		tagMapper.deleteTag(tagId);
 	}
 
 }

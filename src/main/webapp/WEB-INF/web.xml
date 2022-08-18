@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="4.0">
 	<display-name>blog</display-name>
 	<welcome-file-list>
-		<welcome-file>/view/login.jsp</welcome-file>
+		<welcome-file>/WEB-INF/view/login.jsp</welcome-file>
 	</welcome-file-list>
 
 	<context-param>

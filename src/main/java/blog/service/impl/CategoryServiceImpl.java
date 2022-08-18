@@ -20,4 +20,28 @@ public class CategoryServiceImpl implements CategoryService{
 		return categoryMapper.getCategoryByPid(pid);
 	}
 
+	public List<Category> getAllCategory() {
+		List<Category> categoryList=categoryMapper.getAllCategory();
+		for(Category c:categoryList) {
+			c.setArticleCount(categoryMapper.getArticleCategoryCount(c.getCategoryId()));
+		}
+		return categoryList;
+	}
+
+	public Category getCategoryById(Integer categoryId) {
+		return categoryMapper.getCategoryById(categoryId);
+	}
+
+	public void updateCategory(Category category) {
+		categoryMapper.updateCategory(category);
+	}
+
+	public void addCategory(Category category) {
+		categoryMapper.addCategory(category);
+	}
+
+	public void deletecategory(Integer categoryId) {
+		categoryMapper.deleteCategory(categoryId);
+	}
+
 }

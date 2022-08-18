@@ -6,4 +6,29 @@
 		select * from category where category_pid=#{pid}
 	</select> 
 	
+	<select id="getAllCategory"  resultType="Category">
+		select * from category
+	</select> 
+	
+	<select id="getArticleCategoryCount" resultType="Integer">
+		select count(*) from article_category_ref where category_id=#{categoryId}
+	</select>
+	
+	<select id="getCategoryById"  resultType="Category">
+		select * from category where category_id=#{categoryId}
+	</select> 
+	
+	<update id="updateCategory" parameterType="Category">
+		update category set category_pid=#{categoryPid},category_name=#{categoryName},category_description=#{categoryDescription},
+		category_icon=#{categoryIcon} where category_id=#{categoryId}
+	</update> 
+	
+	<insert id="addCategory" parameterType="Category">
+		insert into category (category_pid,category_name,category_description,category_order,category_icon) 
+		values(#{categoryPid},#{categoryName},#{categoryDescription},1,#{categoryIcon})
+	</insert> 
+	
+	<delete id="deleteCategory">
+		delete from category where category_id=#{categoryId}
+	</delete> 
 </mapper>

@@ -33,7 +33,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="a" items="${ pageInfo.list}">
+					<c:forEach var="a" items="${pageInfo.list}">
 						<tr>
 							<td><a href="/article/${a.articleId }" target="_blank"> ${a.articleTitle }</a></td>
 							<td>
