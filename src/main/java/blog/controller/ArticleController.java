@@ -235,4 +235,18 @@ public class ArticleController {
 		articleService.deleteArticleById(articleId);
 		response.getWriter().println("删除成功");
 	}
+	
+	@RequestMapping("/index")
+	public String del(ModelMap m) {
+		//文章列表
+		List<Article> articleList=articleService.getArticleByStatus(6);
+		//评论列表
+		List<Comment> commentList=commentSerivce.getCommentLimit(6);
+
+		m.put("articleList", articleList);
+		m.put("commentList", commentList);
+		return "index";
+	}
+	
+	
 }

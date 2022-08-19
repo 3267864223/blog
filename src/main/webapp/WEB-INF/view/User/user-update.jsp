@@ -13,7 +13,7 @@
 <rapid:override name="frame-content">
 	<blockquote class="layui-elem-quote">
 		<span class="layui-breadcrumb" lay-separator="/"> 
-			<a href="/admin">首页</a> <a href="user">用户列表</a> <a><cite>编辑用户</cite></a>
+			<a href="article/index">首页</a> <a href="user">用户列表</a> <a><cite>编辑用户</cite></a>
 		</span>
 	</blockquote>
 	
@@ -81,6 +81,19 @@
 				<input type="url" name="userUrl" placeholder="" class="layui-input" value="${user.userUrl}">
 			</div>
 		</div>
+		 <div class="layui-form-item">
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-block">
+            	<c:if test="${user.userStatus eq 0}">
+	                <input type="radio" name="userStatus" value="1" title="正常" >
+	                <input type="radio" name="userStatus" value="0" title="禁用" checked>
+                </c:if>
+                <c:if test="${user.userStatus != 0}">
+	                <input type="radio" name="userStatus" value="1" title="正常" checked>
+	                <input type="radio" name="userStatus" value="0" title="禁用" >
+                </c:if>
+            </div>
+        </div>
 	
 		<div class="layui-form-item">
 			<div class="layui-input-block">

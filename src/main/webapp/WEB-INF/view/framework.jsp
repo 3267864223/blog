@@ -32,7 +32,7 @@
 	<div class="layui-layout layui-layout-admin">
 		<div class="layui-header ">
 			<div class="layui-logo">
-				<a href="/admin" style="color: #009688;"> 博客后台 </a>
+				<a href="article/index" style="color: #009688;"> 博客后台 </a>
 			</div>
 			<!-- 头部区域（可配合layui已有的水平导航） -->
 			<ul class="layui-nav layui-layout-left ">
@@ -40,13 +40,13 @@
 				<li class="layui-nav-item"><a href="javascript:;">新建</a>
 					<dl class="layui-nav-child">
 						<dd>
-							<a href="/admin/article/insert">文章</a>
+							<a href="article/add">文章</a>
 						</dd>
 						<dd>
 							<a href="/admin/page/insert">页面</a>
 						</dd>
 						<dd>
-							<a href="/admin/category/insert">分类</a>
+							<a href="category">分类</a>
 						</dd>
 						<dd>
 							<a href="/admin/notice/insert">公告</a>
@@ -116,7 +116,7 @@
 								<a href="/admin/notice/insert">添加公告</a>
 							</dd>
 						</dl></li>
-					<li class="layui-nav-item"><a href="/admin/comment"> 评论 </a></li>
+					<li class="layui-nav-item"><a href="comment"> 评论 </a></li>
 					<li class="layui-nav-item layui-nav-itemed"><a href="javascript:;">用户 </a>
 						<dl class="layui-nav-child">
 							<dd>

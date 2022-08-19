@@ -65,7 +65,6 @@ public class UserController {
 
 				request.setAttribute("articleList", articleList);
 				request.setAttribute("commentList", commentList);
-				request.setAttribute("msg", "登录成功");
 				return "index";	
 			}
 			else {

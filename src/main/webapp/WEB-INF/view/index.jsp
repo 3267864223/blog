@@ -45,12 +45,15 @@
 												<blockquote>
 													<p>${c.commentContent }</p>
 												</blockquote>
-												<p class="row-actions">
-													| <span class=""> <a data-comment-id="1268"
-														href="/admin/comment/reply/29"> 回复 </a>
-													</span> <span class=""> | <a href="/admin/comment/edit/29">编辑</a>
-													</span> <span class=""> | <a href="javascript:void(0)"
-														onclick="deleteComment(29)">删除</a>
+												<p class="row-actions">| 
+													<span class=""> 
+														<a data-comment-id="1268" href="comment/reply?commentId=${c.commentId }"> 回复 </a>
+													</span>
+													<span class=""> | 
+														<a href="comment/update?commentId=${c.commentId }">编辑</a>
+													</span> 
+													<span class=""> | 
+														<a href="javascript:del(${c.commentId })">删除</a>
 													</span>
 												</p>
 											</div>
@@ -111,7 +114,20 @@
 
 <rapid:override name="frame-footer-script">
 	<script>
-	
+		function del(commentId){
+			var result=true;
+			result=confirm("确定删除吗");
+			if(result==true){
+				$.ajax({
+					url:"comment/del",
+					data:{commentId:commentId},
+					success:function(msg){
+						alert(msg);
+						window.location.href="article/index";
+					}
+				});
+			}
+		}
 	</script>
 </rapid:override>
 

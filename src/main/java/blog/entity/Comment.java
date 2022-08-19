@@ -13,7 +13,7 @@ public class Comment {
 	// 评论的父级ID
 	private Integer commentPid;
 
-	// 评论人的名称
+	// 被评论人的名称
 	private String commentPname;
 
 	// 被评论的文章的ID
