@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="blog.mapper.LinkMapper">
+
+	<select id="getAllLink" resultType="Link">
+		select * from link order by link_status asc,link_order desc
+	</select> 
+	
+	<select id="getLinkById" resultType="Link">
+		select * from link where link_id=#{linkId}
+	</select> 
+	
+	<update id="updateLink" parameterType="Link">
+		update link set link_name=#{linkName},link_url=#{linkUrl},link_owner_contact=#{linkOwnerContact},
+		link_description=#{linkDescription},link_update_time=#{linkUpdateTime},link_order=#{linkOrder},link_status=#{linkStatus}
+		 where link_id=#{linkId}
+	</update> 
+	
+	<insert id="addLink" parameterType="Link" useGeneratedKeys="true" keyProperty="linkId">
+		insert into link (link_url,link_name,link_image,link_description,
+		link_owner_nickname,link_owner_contact,link_update_time,link_create_time,
+		link_order,link_status) values(#{linkUrl},#{linkName},#{linkImage},#{linkDescription},
+		#{linkOwnerNickname},#{linkOwnerContact},#{linkUpdateTime},#{linkCreateTime},
+		#{linkOrder},1)
+	</insert> 
+	
+	<delete id="deleteLink">
+		delete from link  where link_id=#{linkId}
+	</delete> 
+</mapper>

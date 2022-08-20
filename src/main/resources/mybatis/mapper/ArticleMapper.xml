@@ -85,5 +85,9 @@
 	<delete id="deleteArticleById">
 		delete from article where article_id=#{articleId}
 	</delete>
+	
+	<select id="getAllDraf"  resultType="Article">
+		select <include refid="t_columns" /> from article where article_status=0 order by article_id desc 
+	</select> 
 
 </mapper>

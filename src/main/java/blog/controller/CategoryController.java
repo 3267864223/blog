@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import blog.entity.Category;
-import blog.entity.Tag;
 import blog.service.CategoryService;
 
 @Controller @RequestMapping("/category")

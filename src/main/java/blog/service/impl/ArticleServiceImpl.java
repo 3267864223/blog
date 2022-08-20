@@ -13,6 +13,7 @@ import blog.entity.Article;
 import blog.entity.Category;
 import blog.entity.Tag;
 import blog.mapper.ArticleMapper;
+import blog.mapper.CategoryMapper;
 import blog.service.ArticleService;
 
 @Service
@@ -20,6 +21,9 @@ public class ArticleServiceImpl implements ArticleService{
 
 	@Resource
 	private ArticleMapper articleMapper;
+	
+	@Resource
+	private CategoryMapper categoryMapper;
 
 	public List<Article> getArticleByStatus(Integer n) {
 		return articleMapper.getArticleByStatus(n);
@@ -31,7 +35,6 @@ public class ArticleServiceImpl implements ArticleService{
 
 	public PageInfo<Article> getPageArticleList(Integer pageIndex, Integer pageSize) {
 		PageHelper.startPage(pageIndex,pageSize);
-		
 		List<Article>  articleList = articleMapper.getAllArticle();
 		return new PageInfo<Article>(articleList);	
 	}
@@ -57,7 +60,6 @@ public class ArticleServiceImpl implements ArticleService{
 		}
 	}
 
-	@Override
 	public Article getArticle(Integer articleId) {
 		Article article=articleMapper.getArticleById(articleId);
 		
@@ -70,7 +72,6 @@ public class ArticleServiceImpl implements ArticleService{
 		return article;
 	}
 
-	@Override
 	public void updateArticle(Article article) {
 		//article表中修改数据
 		articleMapper.updateArticle(article);
@@ -89,8 +90,7 @@ public class ArticleServiceImpl implements ArticleService{
 			articleMapper.addArticleTag(article.getArticleId(),t.getTagId());
 		}
 	}
-
-	@Override
+	
 	public void deleteArticleById(Integer articleId) {
 		//article表中删除数据
 		articleMapper.deleteArticleById(articleId);
@@ -101,5 +101,11 @@ public class ArticleServiceImpl implements ArticleService{
 		//article_tag_ref表中删除数据
 		articleMapper.deleteArticleTag(articleId);
 		
+	}
+
+	public PageInfo<Article> getPageDraftList(Integer pageIndex, Integer pageSize) {
+		PageHelper.startPage(pageIndex,pageSize);
+		List<Article>  articleList = articleMapper.getAllDraf();
+		return new PageInfo<Article>(articleList);	
 	}
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
@@ -60,7 +61,7 @@ public class CommentController {
 	}
 	
 	@RequestMapping(value="reply",method = RequestMethod.POST)
-	public String ReplyComment(Comment comment,ModelMap m){
+	public String ReplyComment(Comment comment,ModelMap m,HttpServletRequest request){
 		comment.setCommentCreateTime(new Date());
 		commentService.replyComment(comment);
 		return "forward:/comment";

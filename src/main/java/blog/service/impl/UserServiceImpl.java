@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-import blog.entity.Article;
 import blog.entity.User;
 import blog.mapper.UserMapper;
 import blog.service.UserService;

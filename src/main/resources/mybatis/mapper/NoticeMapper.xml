@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="blog.mapper.NoticeMapper">
+
+	<select id="getAllNotice" resultType="Notice">
+		select * from notice order by notice_status asc,notice_order desc
+	</select> 
+	
+	<select id="getNoticeById" resultType="Notice">
+		select * from notice where notice_id=#{noticeId}
+	</select> 
+	
+	<update id="updateNotice" parameterType="Notice">
+		update notice set notice_title=#{noticeTitle},notice_content=#{noticeContent},
+		notice_update_time=#{noticeUpdateTime},notice_status=#{noticeStatus},notice_order=#{noticeOrder}
+		 where notice_id=#{noticeId}
+	</update> 
+	
+	<insert id="addNotice" parameterType="Notice" >
+		insert into notice (notice_title,notice_content,notice_create_time,notice_update_time,
+		notice_status,notice_order) values(#{noticeTitle},#{noticeContent},
+		#{noticeCreateTime},#{noticeUpdateTime},#{noticeStatus},#{noticeOrder})
+	</insert> 
+	
+	<delete id="deleteNotice">
+		delete from notice where notice_id=#{noticeId}
+	</delete> 
+</mapper>

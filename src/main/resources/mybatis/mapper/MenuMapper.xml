@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="blog.mapper.MenuMapper">
+
+	<select id="getAllMenu"  resultType="Menu">
+		select * from menu order by menu_order desc
+	</select> 
+	
+	<select id="getMenuById"  resultType="Menu">
+		select * from menu where menu_id=#{menuId}
+	</select> 
+	
+	<update id="updateMenu" parameterType="Menu">
+		update menu set menu_name=#{menuName},menu_url=#{menuUrl},menu_icon=#{menuIcon},
+		menu_level=#{menuLevel},menu_order=#{menuOrder} where menu_id=#{menuId}
+	</update> 
+	
+	<insert id="addMenu" parameterType="Menu">
+		insert into menu (menu_name,menu_url,menu_icon,menu_level,menu_order) 
+		values(#{menuName},#{menuUrl},#{menuIcon},#{menuLevel},#{menuOrder})
+	</insert> 
+	
+	<delete id="deleteMenu">
+		delete from menu where menu_id=#{menuId}
+	</delete> 
+</mapper>

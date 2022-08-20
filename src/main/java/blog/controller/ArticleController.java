@@ -74,6 +74,19 @@ public class ArticleController {
 		return "Article/article-list";
 	}
 	
+	@RequestMapping("draft")
+	public String getAllDraft(@RequestParam(required = false,defaultValue="1") Integer pageIndex,
+			@RequestParam(required = false,defaultValue = "10") Integer pageSize,
+			ModelMap m){
+		
+		List<Article> cateList=articleService.getArticleCate();
+		PageInfo<Article> pageInfoDraft=articleService.getPageDraftList(pageIndex,pageSize);
+		m.put("pageInfo",pageInfoDraft);
+		m.put("cateList",cateList);
+		m.put("pageUrlPrefix", "article/allDraft?pageIndex"); 
+		return "Article/article-draft-list";
+	}
+	
 	@RequestMapping(value = "add" ,method=RequestMethod.GET)
 	public String gotoAdd(ModelMap m) {
 		

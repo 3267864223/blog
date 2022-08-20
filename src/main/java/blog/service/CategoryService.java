@@ -3,7 +3,6 @@ package blog.service;
 import java.util.List;
 
 import blog.entity.Category;
-import blog.entity.Tag;
 
 public interface CategoryService {
 

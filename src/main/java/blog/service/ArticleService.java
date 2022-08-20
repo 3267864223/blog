@@ -61,4 +61,12 @@ public interface ArticleService {
 	 * @param article 文章id
 	 */
 	void deleteArticleById(Integer articleId);
+
+	/**
+	 * 分页查询草稿列表
+	 * @param pageIndex 从第几页开始查
+	 * @param pageSize  每页多少条
+	 * @return PageInfo类型的数据,里面含有草稿列表和分页相关数据
+	 */
+	PageInfo<Article> getPageDraftList(Integer pageIndex, Integer pageSize);
 }

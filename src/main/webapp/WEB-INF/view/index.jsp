@@ -99,7 +99,7 @@
 						</form>
 						<div class="drafts">
 							<p class="view-all">
-								<a href="/admin/article" aria-label="查看所有草稿">查看所有</a>
+								<a href="article/draft" aria-label="查看所有草稿">查看所有</a>
 							</p>
 							<h2 class="hide-if-no-js">草稿</h2>
 							<ul>

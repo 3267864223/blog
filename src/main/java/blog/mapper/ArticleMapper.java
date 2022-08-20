@@ -102,5 +102,11 @@ public interface ArticleMapper {
 	 * @param 文章id
 	 */
 	void deleteArticleById(Integer articleId);
+
+	/**
+	 * 查询全部草稿
+	 * @return 草稿信息
+	 */
+	List<Article> getAllDraf();
 	
 }
