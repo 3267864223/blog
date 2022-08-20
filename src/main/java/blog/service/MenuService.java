@@ -8,7 +8,7 @@ public interface MenuService {
 	
 	/**
 	 * 查询全部菜单
-	 * @return 菜单信息
+	 * @return 菜单信息列表
 	 */
 	List<Menu> getAllMenu();
 

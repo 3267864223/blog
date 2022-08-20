@@ -35,7 +35,7 @@ public class Options {
     private String optionAboutsiteContent;
 
     //微信二维码图片
-    private  byte [] optionAboutsiteWechatphoto;
+    private byte [] optionAboutsiteWechatphoto;
 
     //QQ
     private String optionAboutsiteQq;

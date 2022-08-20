@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="blog.mapper.OptionsMapper">
+
+	<select id="getAllOptions"  resultType="Options">
+		select * from options 
+	</select> 
+	
+	<select id="getOptionsById"  resultType="Options">
+		select * from options where option_id=#{optionId}
+	</select> 
+	
+	<update id="updateOptions" parameterType="Options">
+		update options set option_site_title=#{optionSiteTitle},option_site_descrption=#{optionSiteDescrption},
+		option_meta_descrption=#{optionMetaDescrption},option_meta_keyword=#{optionMetaKeyword},
+		option_aboutsite_title=#{optionAboutsiteTitle},option_aboutsite_content=#{optionAboutsiteContent},
+		option_aboutsite_qq=#{optionAboutsiteQq},option_aboutsite_github=#{optionAboutsiteGithub},
+		option_aboutsite_weibo=#{optionAboutsiteWeibo}
+		 where option_id=#{optionId}
+	</update> 
+	
+	<update id="updateOptionsP2" parameterType="Options">
+		update options set option_site_title=#{optionSiteTitle},option_site_descrption=#{optionSiteDescrption},
+		option_meta_descrption=#{optionMetaDescrption},option_meta_keyword=#{optionMetaKeyword},
+		option_aboutsite_title=#{optionAboutsiteTitle},option_aboutsite_content=#{optionAboutsiteContent},
+		option_aboutsite_qq=#{optionAboutsiteQq},option_aboutsite_github=#{optionAboutsiteGithub},
+		option_aboutsite_weibo=#{optionAboutsiteWeibo},option_aboutsite_photo=#{optionAboutsitePhoto},
+		option_aboutsite_wechatphoto=#{optionAboutsiteWechatphoto}
+		 where option_id=#{optionId}
+	</update>
+	
+	<update id="updateOptionsPv" parameterType="Options">
+		update options set option_site_title=#{optionSiteTitle},option_site_descrption=#{optionSiteDescrption},
+		option_meta_descrption=#{optionMetaDescrption},option_meta_keyword=#{optionMetaKeyword},
+		option_aboutsite_title=#{optionAboutsiteTitle},option_aboutsite_content=#{optionAboutsiteContent},
+		option_aboutsite_qq=#{optionAboutsiteQq},option_aboutsite_github=#{optionAboutsiteGithub},
+		option_aboutsite_weibo=#{optionAboutsiteWeibo},option_aboutsite_wechatphoto=#{optionAboutsiteWechatphoto}
+		 where option_id=#{optionId}
+	</update>
+	
+	<update id="updateOptionsPa" parameterType="Options">
+		update options set option_site_title=#{optionSiteTitle},option_site_descrption=#{optionSiteDescrption},
+		option_meta_descrption=#{optionMetaDescrption},option_meta_keyword=#{optionMetaKeyword},
+		option_aboutsite_title=#{optionAboutsiteTitle},option_aboutsite_content=#{optionAboutsiteContent},
+		option_aboutsite_qq=#{optionAboutsiteQq},option_aboutsite_github=#{optionAboutsiteGithub},
+		option_aboutsite_weibo=#{optionAboutsiteWeibo},option_aboutsite_photo=#{optionAboutsitePhoto}
+		 where option_id=#{optionId}
+	</update>
+	
+</mapper>
