@@ -2,6 +2,9 @@ package blog.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
@@ -47,7 +50,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String login(HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	public String login(HttpServletRequest request) throws NoSuchAlgorithmException, UnsupportedEncodingException, UnknownHostException {
 		String userName=request.getParameter("userName");
 		String userPass=request.getParameter("userPass");
 		//加密
@@ -57,7 +60,12 @@ public class UserController {
 		if(user!=null) {
 			if(user.getUserPass().equals(encryption)) {
 				request.getSession().setAttribute("session_user", user);
-				
+				user.setUserLastLoginTime(new Date());
+				//获取ip
+				InetAddress ip4=Inet4Address.getLocalHost();
+				user.setUserLastLoginIp(ip4.getHostAddress());
+				//添加时间和ip
+				userService.updateUserLogin(user);
 				//文章列表
 				List<Article> articleList=articleSerivce.getArticleByStatus(6);
 				//评论列表
@@ -82,7 +90,7 @@ public class UserController {
 	public String logout(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		session.invalidate();	
-		return "login";
+		return "forward:/user/login";
 	}
 	
 	@RequestMapping("")
@@ -131,7 +139,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/update",method=RequestMethod.GET)
-	public String toUpdateUser(Integer userId,ModelMap m) {
+	public String toUpdateUser(Integer userId,ModelMap m) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		User user=userService.getUserById(userId);
 		m.put("user", user);
 		return "User/user-update";
@@ -144,5 +152,12 @@ public class UserController {
 		}
 		userService.updateUser(user);
 		return "forward:/user";
+	}
+	
+	@RequestMapping("/profile")
+	public String profile(HttpServletRequest request) {
+		User user=(User) request.getSession().getAttribute("session_user");
+		request.setAttribute("user", user);
+		return "User/user-profile";
 	}
 }

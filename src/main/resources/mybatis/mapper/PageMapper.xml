@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="blog.mapper.PageMapper">
+
+	<select id="getAllPage" resultType="Page">
+		select * from page
+	</select> 
+	
+	<select id="getPageById" resultType="Page">
+		select * from page where page_id=#{pageId}
+	</select> 
+	
+	<update id="updatePage" parameterType="Page">
+		update page set page_key=#{pageKey},page_title=#{pageTitle},page_content=#{pageContent},
+		page_update_time=#{pageUpdateTime},page_status=#{pageStatus},page_summary=#{pageSummary}
+		 where page_id=#{pageId}
+	</update> 
+	
+	<insert id="addPage" parameterType="Page" >
+		insert into page (page_key,page_title,page_content,page_update_time,page_create_time,page_status,page_summary)
+		 values(#{pageKey},#{pageTitle},#{pageContent},#{pageCreateTime},#{pageUpdateTime},#{pageStatus},#{pageSummary})
+	</insert> 
+	
+	<delete id="deletePage">
+		delete from page where page_id=#{pageId}
+	</delete> 
+</mapper>

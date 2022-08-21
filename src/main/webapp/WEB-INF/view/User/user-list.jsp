@@ -39,7 +39,7 @@
 						<tr>
 							<td>
 								<img src="user/photo?userId=${p.userId }" width="48" height="48"> 
-								 <strong><a href="user/edit/${p.userId}">${p.userName}</a></strong>
+								 <strong><a href="user/update?userId=${p.userId}">${p.userName}</a></strong>
 							</td>
 							<td>${p.userNickname}</td>
 							<td>${p.userEmail}</td>

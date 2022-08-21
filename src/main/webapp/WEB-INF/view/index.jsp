@@ -22,7 +22,7 @@
 								<br>
 								<ul>
 									<c:forEach var="a" items="${articleList }">
-										<li><span><fmt:formatDate pattern="HH:mm M月dd日" value="${a.articleUpdateTime }"/>  </span> <a href="/article/${a.articleId }"	target="_blank">${a.articleTitle }</a></li>
+										<li><span><fmt:formatDate pattern="HH:mm MM月dd日" value="${a.articleUpdateTime }"/>  </span> <a href="/article/${a.articleId }"	target="_blank">${a.articleTitle }</a></li>
 									</c:forEach>
 								</ul>	
 							</div>
@@ -31,10 +31,13 @@
 								<h3>近期评论</h3>
 								<ul id="the-comment-list" data-wp-lists="list:comment">
 									<c:forEach var="c" items="${commentList }">
-										<li class="comment   thread-even comment-item approved"><img
-											alt=""
-											src="${c.commentAuthorAvatar }"
-											class="avatar avatar-50 photo" height="50" width="50">
+										<li class="comment   thread-even comment-item approved">
+											<c:if test="${c.user.userId eq null}">
+												<img alt="" src="resources/uploads/2017/10/yk.jpg" class="avatar avatar-50 photo" height="50" width="50">
+											</c:if>
+											<c:if test="${c.user.userId != null}">
+												<img alt="" src="user/photo?userId=${c.user.userId }" class="avatar avatar-50 photo" height="50" width="50">
+											</c:if>
 											<div class="dashboard-comment-wrap has-row-actions">
 												<p class="comment-meta">
 													由<cite class="comment-author"> <a target="_blank"

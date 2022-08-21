@@ -3,6 +3,7 @@ package blog.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -50,6 +51,8 @@ public class ArticleController {
 	
 	@RequestMapping("/insertDraftSubmit")
 	public String insertDraftSubmit(Article article,ModelMap m){
+		article.setArticleCreateTime(new Date());
+		article.setArticleUpdateTime(new Date());
 		articleService.insertDraftSubmit(article);
 		//文章列表
 		List<Article> articleList=articleService.getArticleByStatus(6);
@@ -110,6 +113,8 @@ public class ArticleController {
 	@RequestMapping(value = "add" ,method=RequestMethod.POST)
 	public String add(HttpServletRequest request) {
 		Article article=new Article();
+		article.setArticleCreateTime(new Date());
+		article.setArticleUpdateTime(new Date());
 		
 		//当前用户id
 		User user=(User) request.getSession().getAttribute("session_user");
@@ -167,7 +172,7 @@ public class ArticleController {
 		
 		//生成一个随机的文件名
 		String newName=UUID.randomUUID().toString()+".jpg";
-		File destFile=new File("D:/imguploads/"+newName);
+		File destFile=new File("C:/imguploads/"+newName);
 		
 		String path="http://localhost:8080/uploads/"+ newName;
 		
@@ -201,6 +206,7 @@ public class ArticleController {
 	@RequestMapping(value = "update" ,method=RequestMethod.POST)
 	public String update(HttpServletRequest request) {
 		Article article=new Article();
+		article.setArticleUpdateTime(new Date());
 		article.setArticleId(Integer.parseInt(request.getParameter("articleId")));
 		//文章标题
 		article.setArticleTitle(request.getParameter("articleTitle"));

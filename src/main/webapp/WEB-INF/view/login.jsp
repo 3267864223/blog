@@ -10,12 +10,12 @@
 <head>
 	<base href="<%=basePath%>">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>博客登录</title>
+	<title>X博客</title>
 	<script src="resources/js/jquery-1.8.0.js"></script>
 	<script src="resources/js/jquery.min.js"></script>
 	<script src="resources/js/jquery.cookie.js"></script>
 	<link rel="stylesheet" href="resources/plugin/font-awesome/css/font-awesome.min.css">
-	<link rel="shortcut icon" href="resources/img/logo.png">
+	<link rel="shortcut icon" href="resources/img/X.gif">
 	<link rel='stylesheet' id='dashicons-css' href='resources/plugin/login/dashicons.min.css' type='text/css' media='all' />
 	<link rel='stylesheet' id='buttons-css' href='resources/plugin/login/buttons.min.css' type='text/css' media='all' />
 	<link rel='stylesheet' id='forms-css' href='resources/plugin/login/forms.min.css' type='text/css' media='all' />
@@ -31,7 +31,7 @@
 		<form name="loginForm" id="loginForm" action="user/login" method="post">
 			<p>
 				<label for="user_login">用户名或电子邮件地址<br /> 
-					<input type="text" name="userName" id="user_login" class="input" value="gggggg" size="20" required />
+					<input type="text" name="userName" id="user_login" class="input" value="" size="20" required />
 				</label>
 			</p>
 			<p>
@@ -41,7 +41,7 @@
 			</p>
 			<p class="forgetmenot">
 				<label for="rememberme">
-					<input name="rememberme" type="checkbox" id="rememberme" value="1"  />记住密码
+					<input name="rememberme" type="checkbox" id="rememberme" value="1"  />记住账号和密码
 				</label>
 			</p>
 			<p class="submit">
@@ -50,7 +50,7 @@
 		</form>
 
 		<p id="backtoblog">
-			<a href="#">&larr; 去往博客前台</a>
+			<a href="javascript:void(0)">&larr; 去往博客前台</a>
 		</p>
 
 	</div>
@@ -60,10 +60,9 @@
 <script>
 	$(function(){
 		getCookie();
-		
 		$("#submit-btn").click(function(){
-			 setCookie();
-		});
+				 setCookie();
+			});
 		
 		var msg="${msg}";
 		if(msg!=""){
@@ -73,17 +72,20 @@
 	
 	//设置Cookie方法
 	function setCookie(){
-	   var user_pass = $("#user_pass").val();
+		var user_name = $("#user_login").val();
+		var user_pass = $("#user_pass").val();
 	   //获取记住密码是否选中
 	   var flag = $("#rememberme").is(":checked");
 	   if(flag){//如果选中-->记住密码登录
 	       //cookie有效时间7天，也可以设置为永久，把时间去掉就行
-	       $.cookie("rememberme","true",{expires:7});
-	       $.cookie("user_pass",user_pass.trim(),{ expires: 7 });
+	       $.cookie("rememberme","true");
+	       $.cookie("user_pass",user_pass.trim());
+	       $.cookie("user_name",user_name.trim());
 	   }else{//如果没选中-->不记住密码登录
 	       //设置cookie有效时间-1，直接将浏览器端原先保存的cookie失效
 	       $.cookie("rememberme","false",{expires:-1});
 	       $.cookie("user_pass", "",{expires:-1});
+	       $.cookie("user_name", "",{expires:-1});
 	   }  
 	}
 	
@@ -92,6 +94,7 @@
 	   var rememberme = $.cookie("rememberme");
 	   //获取cookie中的登陆密码    
 	   var user_pass =  $.cookie("user_pass");
+	   var user_name = $.cookie("user_name");
 	  //记住密码为true的话把  记住密码  复选框勾选住    
 	   if(rememberme){
 	      $("#rememberme").attr("checked","true");    
@@ -101,6 +104,12 @@
 	        $("#user_pass").val(user_pass);
 	   }else{
 	        $("#user_pass").val("");
+	   }
+	 
+	   if(user_name!=""){
+	        $("#user_login").val(user_name);
+	   }else{
+	        $("#user_login").val("");
 	   }
 	}
 </script>

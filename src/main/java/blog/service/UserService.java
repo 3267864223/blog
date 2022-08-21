@@ -46,4 +46,10 @@ public interface UserService {
 	 */
 	void updateUser(User user);
 
+	/**
+	 * 更新用户登录时间和ip
+	 * @param 用户信息
+	 */
+	void updateUserLogin(User user);
+
 }

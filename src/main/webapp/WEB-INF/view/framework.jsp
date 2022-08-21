@@ -11,14 +11,14 @@
 <head>
 	<base href="<%=basePath%>">
 	
-	<title>博客后台</title>
+	<title>X博客后台</title>
 	
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
 	<meta charset="utf-8">
 	<script src="resources/js/jquery-1.8.0.js"></script>
-	<link rel="shortcut icon" href="resources/img/logo.png">
+	<link rel="shortcut icon" href="resources/img/X.gif">
 	<link rel="stylesheet" href="resources/plugin/layui/css/layui.css">
 	<link rel="stylesheet" href="resources/css/back.css">
 	<link rel="stylesheet" href="resources/plugin/font-awesome/css/font-awesome.min.css">
@@ -32,18 +32,18 @@
 	<div class="layui-layout layui-layout-admin">
 		<div class="layui-header ">
 			<div class="layui-logo">
-				<a href="article/index" style="color: #009688;"> 博客后台 </a>
+				<a href="article/index" style="color: #009688;"> X博客管理 </a>
 			</div>
 			<!-- 头部区域（可配合layui已有的水平导航） -->
 			<ul class="layui-nav layui-layout-left ">
-				<li class="layui-nav-item"><a href="/" target="_blank">前台</a></li>
+				<li class="layui-nav-item"><a href="javascript:void(0)" target="_blank">前台</a></li>
 				<li class="layui-nav-item"><a href="javascript:;">新建</a>
 					<dl class="layui-nav-child">
 						<dd>
 							<a href="article/add">文章</a>
 						</dd>
 						<dd>
-							<a href="page/insert">页面</a>
+							<a href="page/toAdd">页面</a>
 						</dd>
 						<dd>
 							<a href="category">分类</a>
@@ -150,8 +150,7 @@
 
 		<div class="layui-footer">
 			<!-- 底部固定区域 -->
-			? 这里展示一些提示性信息 <a href="#" target="_blank">其他导航</a> / <a href="#"
-				target="_blank">其他导航</a>
+			制作：关喻轩&nbsp;&nbsp;qq：3267864223&nbsp;&nbsp;
 		</div>
 	</div>
 

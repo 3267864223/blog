@@ -55,4 +55,18 @@ public interface UserMapper {
 	 * @param 用户信息
 	 */
 	void updateUser(User user);
+	
+	/**
+	 *更新登录时间和ip
+	 * @param 用户信息
+	 */
+	void updateUserLogin(User user);
+
+
+	/**
+	 *根据commentAuthorName查询用户
+	 * @param commentAuthorName
+	 * @return 用户信息
+	 */
+	User getUserByNickname(String commentAuthorName);
 }

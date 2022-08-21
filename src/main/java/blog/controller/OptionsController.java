@@ -54,6 +54,7 @@ public class OptionsController {
 		}
 	}
 	
+	//含有多文件上传
 	@RequestMapping("/update")
 	public String updateUser(Options options,@RequestParam MultipartFile[] photo) throws IOException {
 		if(photo[0].getSize()!=0 && photo[1].getSize()!=0) {

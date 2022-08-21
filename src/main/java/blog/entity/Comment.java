@@ -54,4 +54,6 @@ public class Comment {
 	// 被评论的文章是哪个 非数据库字段
 	private Article article;
 	
+	private User user;
+	
 }

@@ -39,4 +39,7 @@ public class Page {
 
     //状态
     private Integer pageStatus; 
+    
+    //页面的部分内容
+    private String pageSummary;
 }

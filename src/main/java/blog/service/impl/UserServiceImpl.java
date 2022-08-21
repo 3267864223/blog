@@ -55,4 +55,8 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+	public void updateUserLogin(User user) {
+		userMapper.updateUserLogin(user);
+	}
+
 }

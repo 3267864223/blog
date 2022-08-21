@@ -13,6 +13,7 @@ import blog.entity.Article;
 import blog.entity.Comment;
 import blog.mapper.ArticleMapper;
 import blog.mapper.CommentMapper;
+import blog.mapper.UserMapper;
 import blog.service.CommentService;
 
 @Service
@@ -23,9 +24,16 @@ public class CommentServiceImpl implements CommentService{
 	
 	@Resource
 	private ArticleMapper articleMapper;
+	
+	@Resource
+	private UserMapper userMapper;
 
 	public List<Comment> getCommentLimit(Integer n){
-		return commentMapper.getCommentLimit(n);
+		List<Comment> commentList=commentMapper.getCommentLimit(n);
+		for(Comment c:commentList) {
+			c.setUser(userMapper.getUserByNickname(c.getCommentAuthorName()));
+		}
+		return commentList;
 	}
 
 	public PageInfo<Comment> getPageCommentList(Integer pageIndex, Integer pageSize) {
@@ -33,6 +41,7 @@ public class CommentServiceImpl implements CommentService{
 		List<Comment> commentList = commentMapper.getAllComment();
 		for(Comment c:commentList) {
 			c.setArticle(articleMapper.getArticleById(c.getCommentArticleId()));
+			c.setUser(userMapper.getUserByNickname(c.getCommentAuthorName()));
 		}
 		return new PageInfo<Comment>(commentList);	
 	}

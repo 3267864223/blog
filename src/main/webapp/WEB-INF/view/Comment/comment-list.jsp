@@ -49,7 +49,13 @@
 					<c:forEach var="p" items="${pageInfo.list}">
 						<tr>
                     		<td>
-                        		<!--  <img src="${p.commentAuthorAvatar }" alt="" width="64px">-->
+	                    		<c:if test="${p.user.userId eq null}">
+									<img alt="" src="resources/uploads/2017/10/yk.jpg" class="avatar avatar-50 photo" height="50" width="50">
+								</c:if>
+								<c:if test="${p.user.userId != null}">
+									<img alt="" src="user/photo?userId=${p.user.userId }" class="avatar avatar-50 photo" height="50" width="50">
+								</c:if>
+                        		<br>
                         		<strong>${p.commentAuthorName }</strong>
                             </td>
                     		<td class="dashboard-comment-wrap">

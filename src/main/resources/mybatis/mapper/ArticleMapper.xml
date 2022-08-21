@@ -9,15 +9,15 @@
     
     <sql id="s_columns">
 	    article_user_id, article_title, article_content, article_view_count, article_comment_count, article_like_count, 
-	    article_is_comment, article_status, article_order
+	    article_is_comment, article_status, article_order,article_update_time,article_create_time
     </sql>
 	
 	<select id="getArticleByStatus"  resultType="Article">
-		select <include refid="t_columns" /> from article where article_status=1 order by article_id desc limit #{n}
+		select <include refid="t_columns" /> from article where article_status=1 order by article_update_time desc limit #{n}
 	</select> 
 	
 	<insert id="insertDraftSubmit"  parameterType="Article">
-		insert into article (<include refid="s_columns" />) values(#{articleUserId},#{articleTitle},#{articleContent},0,0,0,1,#{articleStatus},1)
+		insert into article (<include refid="s_columns" />) values(#{articleUserId},#{articleTitle},#{articleContent},0,0,0,1,#{articleStatus},1,#{articleUpdateTime},#{articleCreateTime})
 	</insert> 
 	
 	<select id="getAllArticle"  resultType="Article">
@@ -40,11 +40,11 @@
 	    insert into article
         (article_user_id, article_title,article_content,
         article_is_comment, article_status, article_order,
-        article_summary)
+        article_summary,article_update_time,article_create_time)
         values (#{articleUserId}, #{articleTitle},
         #{articleContent}, #{articleIsComment},
         #{articleStatus}, #{articleOrder},
-        #{articleSummary})
+        #{articleSummary},#{articleUpdateTime},#{articleCreateTime})
 	</insert>
 	
 	<!-- 添加文章和分类的对应关系 -->
@@ -71,7 +71,7 @@
 	
 	<update id="updateArticle"  parameterType="Article">
 		update article set article_title=#{articleTitle},article_content=#{articleContent},
-		article_status=#{articleStatus},article_summary=#{articleSummary} where article_id=#{articleId}
+		article_status=#{articleStatus},article_summary=#{articleSummary},article_update_time=#{articleUpdateTime} where article_id=#{articleId}
 	</update>
 	
 	<delete id="deleteArticleCategory">

@@ -26,7 +26,7 @@ public class CommentController {
 	
 	@RequestMapping("")
 	public String getAllArticle(@RequestParam(required = false,defaultValue="1") Integer pageIndex,
-			@RequestParam(required = false,defaultValue = "9") Integer pageSize,
+			@RequestParam(required = false,defaultValue = "6") Integer pageSize,
 			ModelMap m){
 		PageInfo<Comment> pageInfoComment=commentService.getPageCommentList(pageIndex,pageSize);
 		m.put("pageInfo",pageInfoComment);
